@@ -45,8 +45,7 @@ def before_first_request():
         model_gcs = data_utils.previous_model(bucket_name,model_name)
         # If any model exists at testing, load it, test it on data and use it on the API
         if model_gcs[0] == True:
-            #model_gcs = data_utils.load_model(bucket_name,model_name) #uncomment to download model from GCS.
-            model_gcs = True,None #comment if you're downloading model from GCS.
+            model_gcs = data_utils.load_model(bucket_name,model_name)
             if model_gcs[0] == True:
                 try:
                     app.logger.info('Loading model file to application.')
