@@ -10,8 +10,7 @@ import sys
 def previous_model(bucket_name,model_filename):
     try:
         print('Checking if a previous model exists at GCS/production.',flush=True)
-        storage_client = storage.Client.from_service_account_json('/root/AutomaticTrainingCICD-68f56bfa992e.json') #if running locally
-        #storage_client = storage.Client() #if running on GCP
+        storage_client = storage.Client() #if running on GCP
         bucket = storage_client.bucket(bucket_name)
         status = storage.Blob(bucket=bucket, name='{}/{}'.format('production',model_filename)).exists(storage_client)
         print('Model existance: '+str(status))
@@ -23,8 +22,7 @@ def previous_model(bucket_name,model_filename):
 def load_model(bucket_name,model_filename):
     print('Loading previous model from GCS bucket. Downloading file.',flush=True)
     try:
-        storage_client = storage.Client.from_service_account_json('/root/AutomaticTrainingCICD-68f56bfa992e.json') #if running locally
-        #storage_client = storage.Client() #if running on GCP
+        storage_client = storage.Client() #if running on GCP
         bucket = storage_client.bucket(bucket_name)
         blob1 = bucket.blob('{}/{}'.format('production',model_filename))
         blob1.download_to_filename('/root/'+str(model_filename))
