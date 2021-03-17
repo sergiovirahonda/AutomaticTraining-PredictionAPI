@@ -75,7 +75,7 @@ def before_first_request():
 def init():
     print('API initialized.')
     message = {'message': 'API initialized.'}
-    response = jsonpickle.encode(response)
+    response = jsonpickle.encode(message)
     return Response(response=response, status=200, mimetype="application/json")
 
 
