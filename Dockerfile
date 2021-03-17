@@ -7,11 +7,12 @@ RUN pip install pandas numpy google-cloud-storage scikit-learn opencv-python Fla
 
 RUN apt-get update; apt-get install git -y; apt-get install -y libgl1-mesa-dev
 
+ADD "https://www.random.org/cgi-bin/randbyte?nbytes=10&format=h" skipcache
 RUN git clone https://github.com/sergiovirahonda/AutomaticTraining-PredictionAPI.git
 
-RUN mv /root/AutomaticTraining-PredictionAPI/data_utils.py /data_utils.py
-RUN mv /root/AutomaticTraining-PredictionAPI/task.py /task.py
-RUN mv /root/AutomaticTraining-PredictionAPI/email_notifications.py /email_notifications.py
+RUN mv /root/AutomaticTraining-PredictionAPI/data_utils.py /root
+RUN mv /root/AutomaticTraining-PredictionAPI/task.py /root
+RUN mv /root/AutomaticTraining-PredictionAPI/email_notifications.py /root
 
 EXPOSE 5000
 

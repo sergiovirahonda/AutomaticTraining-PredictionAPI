@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: gke-prediction-api
+spec:
+  containers:
+  - name: prediction-api
+    image: gcr.io/automatictrainingcicd/prediction-api:latest

@@ -126,8 +126,6 @@ def self_initialize():
             except:
                 print('API has not started. Still attempting to initialize it.')
             time.sleep(3)
-
-    print('Initializing API.')
     thread = threading.Thread(target=initialization)
     thread.start()
 
